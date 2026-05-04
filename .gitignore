@@ -2,3 +2,5 @@
 /.tanstack
 /node_modules
 /skills-lock.json
+/.wrangler
+/dist
