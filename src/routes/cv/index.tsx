@@ -14,7 +14,14 @@ export const Route = createFileRoute("/cv/")({
     lang: (search.lang === "en" ? "en" : "fr") as "fr" | "en",
   }),
   head: () => ({
-    meta: [{ title: "Nicolas Thouvenin - CV" }],
+    meta: [
+      { title: "Nicolas Thouvenin - CV" },
+      {
+        name: "description",
+        content:
+          "CV de Nicolas Thouvenin, développeur web spécialisé en React et Node.js. Découvrez mon expérience, mes compétences et comment me contacter.",
+      },
+    ],
     links: [
       {
         rel: "stylesheet",
