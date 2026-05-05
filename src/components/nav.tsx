@@ -7,6 +7,8 @@ import {
 import { Logo, LogoVertical } from "./logo";
 import { Link } from "@tanstack/react-router";
 import { ResumeLocale } from "~/config/data";
+import { siGithub } from "simple-icons";
+import { SimpleIcon } from "./simple-icon";
 
 export function Nav({
   locale,
@@ -23,19 +25,23 @@ export function Nav({
     {
       label: locale.ui.nav.experience,
       href: "#experience",
-      icon: <BriefcaseIcon />,
+      icon: <BriefcaseIcon size={20} />,
     },
     {
       label: locale.ui.nav.education,
       href: "#education",
-      icon: <GraduationCap />,
+      icon: <GraduationCap size={20} />,
     },
     {
       label: locale.ui.nav.skills,
       href: "#skills",
-      icon: <ChartNoAxesCombined />,
+      icon: <ChartNoAxesCombined size={20} />,
     },
-    { label: locale.ui.nav.contact, href: "#contact", icon: <MailCheckIcon /> },
+    {
+      label: locale.ui.nav.contact,
+      href: "#contact",
+      icon: <MailCheckIcon size={20} />,
+    },
   ];
 
   return (
@@ -56,13 +62,26 @@ export function Nav({
               <a
                 key={href}
                 href={href}
-                className="text-sm text-neutral-400 hover:text-white transition-colors duration-200 flex items-center gap-2 py-2"
+                className="text-sm text-neutral-400 hover:text-white transition-colors duration-200 flex flex-row align-middle items-center gap-2 py-2"
               >
-                {label}
+                <div>{icon}</div>
+                <div>{label}</div>
               </a>
             ))}
           </nav>
           <div className="flex items-center gap-3">
+            <a href="https://github.com/Nico-Mugi" target="_blank">
+              <button
+                className="text-sm font-medium px-3 py-1.5 rounded-lg border border-neutral-700 text-neutral-400 hover:border-[#8FAF83] hover:text-white transition-all duration-200"
+                aria-label="Switch language"
+              >
+                <SimpleIcon
+                  path={siGithub.path}
+                  title={siGithub.title}
+                  size={16}
+                />
+              </button>
+            </a>
             <Link
               to="/"
               search={({ lang }) => ({ lang: lang === "en" ? "fr" : "en" })}
