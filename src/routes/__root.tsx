@@ -28,7 +28,28 @@ export const Route = createRootRoute({
           "Portfolio de Nicolas Thouvenin, développeur web spécialisé en React et Node.js. Découvrez mon expérience, mes compétences et comment me contacter.",
       },
       {
-        name: "image",
+        name: "og:title",
+        content: "Nicolas Thouvenin - Portfolio",
+      },
+      {
+        name: "og:description",
+        content:
+          "Portfolio de Nicolas Thouvenin, développeur web spécialisé en React et Node.js. Découvrez mon expérience, mes compétences et comment me contacter.",
+      },
+      {
+        name: "og:type",
+        content: "website",
+      },
+      {
+        name: "og:url",
+        content: "https://nicolas-thouvenin.dev",
+      },
+      {
+        name: "og:site_name",
+        content: "Nicolas Thouvenin - Portfolio",
+      },
+      {
+        name: "og:image",
         content: "https://nicolas-thouvenin.dev/logos/vertical.svg",
       },
     ],
