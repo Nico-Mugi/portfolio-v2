@@ -1,4 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40">
+<svg version="1.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    width="60" height="40"
+    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40">
     <text
         x="6.333333"
         y="50%"
@@ -7,17 +10,14 @@
         font-weight="700"
         font-size="25"
         letter-spacing="-0.025em"
-    >
-        NT
-    </text>
+    >NT</text>
     <text
+        x="0"
         dy="100%"
         fill="#8FAF83"
         font-family="Inter, sans-serif"
         font-weight="700"
         font-size="25"
         letter-spacing="-0.025em"
-    >
-        .DEV
-    </text>
+    >.DEV</text>
 </svg>

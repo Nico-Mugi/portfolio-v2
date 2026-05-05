@@ -50,7 +50,7 @@ export const Route = createRootRoute({
       },
       {
         name: "og:image",
-        content: "https://nicolas-thouvenin.dev/logos/vertical.svg",
+        content: "https://nicolas-thouvenin.dev/logos/vertical.png",
       },
     ],
     links: [
