@@ -184,8 +184,8 @@ const SideSection = ({ title, items }: SideSectionProps) => (
 
 function Nav({ locale, lang }: { locale: ResumeLocale; lang: "fr" | "en" }) {
   return (
-    <div className="relative h-full max-h-screen max-w-screen w-full print:hidden z-50">
-      <header className="fixed top-0 inset-x-0 bg-neutral-950/80 backdrop-blur-md border-b border-white/5">
+    <div className="fixed top-0 inset-x-0 h-screen max-h-screen max-w-full w-full print:hidden z-50">
+      <header className="bg-neutral-950/80 backdrop-blur-md border-b border-white/5">
         <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link
             to="/"
@@ -217,8 +217,8 @@ function Nav({ locale, lang }: { locale: ResumeLocale; lang: "fr" | "en" }) {
           </div>
         </div>
       </header>
-      <aside className="max-w-screen fixed bottom-4 right-4">
-        <nav className="flex flex-col items-center gap-2">
+      <aside className="h-full w-full relative">
+        <nav className="fixed bottom-4 left-4 flex flex-col items-center gap-2">
           <a
             onClick={() => window.print()}
             className="text-neutral-300 cursor-pointer rounded-full bg-foreground p-6 hover:text-neutral-400 transition-colors duration-200"
@@ -244,11 +244,11 @@ function NicolasThouveninCV() {
 
   return (
     <div
-      className="w-fit min-w-screen py-24 bg-neutral-900 print:py-0 print:h-fit relative"
+      className="min-w-fit py-24 bg-neutral-900 print:py-0 print:h-fit relative"
       style={{ printColorAdjust: "exact" }}
     >
       <Nav locale={locale} lang={lang} />
-      <div className="aspect-210/297 w-[210mm] mx-auto overflow-hidden bg-[#8FAF83] flex flex-row">
+      <div className="aspect-210/297 w-[210mm] mx-auto bg-[#8FAF83] flex flex-row">
         <div className="flex flex-col gap-2">
           <div className="w-35 h-35 rounded-full border-3 border-white overflow-hidden shadow-xs mx-auto mt-2">
             <img
