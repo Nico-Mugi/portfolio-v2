@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40">
+    <text
+        x="6.333333"
+        y="50%"
+        fill="white"
+        font-family="Inter, sans-serif"
+        font-weight="700"
+        font-size="25"
+        letter-spacing="-0.025em"
+    >
+        NT
+    </text>
+    <text
+        dy="100%"
+        fill="#8FAF83"
+        font-family="Inter, sans-serif"
+        font-weight="700"
+        font-size="25"
+        letter-spacing="-0.025em"
+    >
+        .DEV
+    </text>
+</svg>

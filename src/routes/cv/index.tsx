@@ -1,6 +1,13 @@
-import { MailIcon, MapPinIcon, PhoneIncomingIcon } from "lucide-react";
-import { createFileRoute } from "@tanstack/react-router";
+import {
+  DownloadIcon,
+  MailIcon,
+  MapPinIcon,
+  PhoneIncomingIcon,
+  PrinterIcon,
+} from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { fr, en, type ResumeLocale } from "~/config/data";
+import { Logo } from "~/components/logo";
 
 export const Route = createFileRoute("/cv/")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -175,58 +182,59 @@ const SideSection = ({ title, items }: SideSectionProps) => (
   </div>
 );
 
-type NavLink = {
-  label: string;
-} & ({ download: true; href: string } | { onClick: () => void });
-
 function Nav({ locale, lang }: { locale: ResumeLocale; lang: "fr" | "en" }) {
-  const navigate = Route.useNavigate();
-
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-neutral-950/80 backdrop-blur-md border-b border-white/5 print:hidden">
-      <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a
-          href={`/?lang=${lang}`}
-          className="font-bold text-xl text-white tracking-tight"
-        >
-          NT<span className="text-[#8FAF83]">.DEV</span>
-        </a>
-        <nav className="hidden md:flex items-center gap-8">
+    <div className="relative h-full max-h-screen max-w-screen w-full print:hidden z-50">
+      <header className="fixed top-0 inset-x-0 bg-neutral-950/80 backdrop-blur-md border-b border-white/5">
+        <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+          <Link
+            to="/"
+            search={({ lang }) => ({ lang: lang === "en" ? "fr" : "en" })}
+            className="h-full w-24 flex items-center"
+          >
+            <Logo />
+          </Link>
+          <div className="flex items-center gap-2">
+            <Link
+              to="/cv"
+              search={({ lang }) => ({ lang: lang === "en" ? "fr" : "en" })}
+              aria-label="Switch language"
+            >
+              <button
+                className="text-sm font-medium px-3 py-1.5 rounded-lg border border-neutral-700 text-neutral-400 hover:border-[#8FAF83] hover:text-white transition-all duration-200"
+                aria-label="Switch language"
+              >
+                {lang === "en" ? "FR" : "EN"}
+              </button>
+            </Link>
+            <Link
+              to="/"
+              search={({ lang }) => ({ lang: lang === "en" ? "fr" : "en" })}
+              className="text-sm font-medium px-4 py-1.5 rounded-lg border border-neutral-700 text-neutral-300 hover:border-[#8FAF83] hover:text-white transition-all duration-200"
+            >
+              {locale.ui.nav.viewPortfolio}
+            </Link>
+          </div>
+        </div>
+      </header>
+      <aside className="max-w-screen fixed bottom-4 right-4">
+        <nav className="flex flex-col items-center gap-2">
           <a
             onClick={() => window.print()}
-            className="text-sm text-neutral-400 hover:text-white transition-colors duration-200"
+            className="text-neutral-300 cursor-pointer rounded-full bg-foreground p-6 hover:text-neutral-400 transition-colors duration-200"
           >
-            {locale.ui.nav.print}
+            <PrinterIcon size={20} />
           </a>
           <a
             download={`Nicolas_Thouvenin_${lang === "en" ? "Resume" : "CV"}.pdf`}
             href={`/files/Nicolas_Thouvenin_${lang === "en" ? "Resume" : "CV"}.pdf`}
-            className="text-sm text-neutral-400 hover:text-white transition-colors duration-200"
+            className="text-neutral-300 rounded-full bg-foreground p-6 hover:text-neutral-400 transition-colors duration-200"
           >
-            {locale.ui.nav.download}
+            <DownloadIcon size={20} />
           </a>
         </nav>
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() =>
-              navigate({
-                search: () => ({ lang: lang === "en" ? "fr" : "en" }),
-              })
-            }
-            className="text-sm font-medium px-3 py-1.5 rounded-lg border border-neutral-700 text-neutral-400 hover:border-[#8FAF83] hover:text-white transition-all duration-200"
-            aria-label="Switch language"
-          >
-            {lang === "en" ? "FR" : "EN"}
-          </button>
-          <a
-            href={`/?lang=${lang}`}
-            className="text-sm font-medium px-4 py-1.5 rounded-lg border border-neutral-700 text-neutral-300 hover:border-[#8FAF83] hover:text-white transition-all duration-200"
-          >
-            {locale.ui.nav.viewPortfolio}
-          </a>
-        </div>
-      </div>
-    </header>
+      </aside>
+    </div>
   );
 }
 
@@ -236,12 +244,11 @@ function NicolasThouveninCV() {
 
   return (
     <div
-      className="w-full min-w-fit py-24 bg-neutral-900 flex justify-center print:py-0 print:h-fit color relative"
+      className="w-fit min-w-screen py-24 bg-neutral-900 print:py-0 print:h-fit relative"
       style={{ printColorAdjust: "exact" }}
     >
       <Nav locale={locale} lang={lang} />
-      <div className="min-w-[210mm] w-[210mm] max-w-[210mm] min-h-[297mm] h-[297mm] max-h-[297mm] bg-[#8FAF83] flex flex-row">
-        {/* Left sidebar */}
+      <div className="aspect-210/297 w-[210mm] mx-auto overflow-hidden bg-[#8FAF83] flex flex-row">
         <div className="flex flex-col gap-2">
           <div className="w-35 h-35 rounded-full border-3 border-white overflow-hidden shadow-xs mx-auto mt-2">
             <img
@@ -306,7 +313,6 @@ function NicolasThouveninCV() {
           </div>
         </div>
 
-        {/* Main content */}
         <div className="flex flex-col gap-0">
           <div className="h-full flex flex-col justify-center py-2 px-4">
             <h1 className="font-[Raleway,sans-serif] font-extrabold text-[32px] text-white uppercase tracking-[0.04em] m-0 leading-none">
