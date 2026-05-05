@@ -29,7 +29,7 @@ export const Route = createRootRoute({
       },
       {
         name: "image",
-        content: "https://nicolas-thouvenin.dev/vertical.svg",
+        content: "https://nicolas-thouvenin.dev/logos/vertical.svg",
       },
     ],
     links: [
