@@ -1,6 +1,7 @@
 import { BriefcaseIcon } from "lucide-react";
 import { SectionHeading } from "./section-heading";
 import { ResumeLocale } from "~/config/data";
+import { m } from "~/paraglide/messages";
 
 export function ExperienceSection({ locale }: { locale: ResumeLocale }) {
   return (
@@ -9,10 +10,10 @@ export function ExperienceSection({ locale }: { locale: ResumeLocale }) {
         <div className="flex items-center gap-3 mb-3">
           <BriefcaseIcon size={14} className="text-[#8FAF83]" />
           <span className="text-[#8FAF83] text-xs font-semibold uppercase tracking-widest">
-            {locale.ui.sections.experienceSubtitle}
+            {m.sections_experience_subtitle()}
           </span>
         </div>
-        <SectionHeading>{locale.ui.sections.experienceTitle}</SectionHeading>
+        <SectionHeading>{m.sections_experience_title()}</SectionHeading>
 
         <div className="relative mt-12">
           <div className="absolute left-6 top-2 bottom-2 w-px bg-linear-to-b from-[#8FAF83]/50 via-neutral-700 to-transparent hidden md:block" />
@@ -35,7 +36,7 @@ export function ExperienceSection({ locale }: { locale: ResumeLocale }) {
                     <div className="flex items-center gap-2 shrink-0">
                       {exp.current && (
                         <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-[#8FAF83]/15 text-[#8FAF83] border border-[#8FAF83]/25">
-                          {locale.ui.experience.currentBadge}
+                          {m.experience_current_badge()}
                         </span>
                       )}
                       <span className="text-xs text-neutral-500 italic">

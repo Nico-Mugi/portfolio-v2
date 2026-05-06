@@ -1,22 +1,20 @@
-import { ResumeLocale } from "~/config/data";
-import { buildContactItems } from "~/helpers/buildContactItems";
+import { contactItems } from "~/config/contactItems";
 import { cn } from "~/lib/utils";
+import { m } from "~/paraglide/messages";
 
-export function ContactSection({ locale }: { locale: ResumeLocale }) {
-  const contactItems = buildContactItems(locale);
-
+export function ContactSection() {
   return (
     <section id="contact" className="bg-neutral-950 py-24">
       <div className="max-w-5xl mx-auto px-6">
         <div className="max-w-xl mx-auto text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            {locale.ui.contactSection.title}{" "}
+            {m.contact_section_title()}{" "}
             <span className="text-[#8FAF83]">
-              {locale.ui.contactSection.titleAccent}
+              {m.contact_section_title_accent()}
             </span>
           </h2>
           <p className="text-neutral-400 leading-relaxed">
-            {locale.ui.contactSection.description}
+            {m.contact_section_description()}
           </p>
         </div>
 

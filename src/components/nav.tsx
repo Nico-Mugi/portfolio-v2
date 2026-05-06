@@ -6,39 +6,34 @@ import {
 } from "lucide-react";
 import { Logo, LogoVertical } from "./logo";
 import { Link } from "@tanstack/react-router";
-import { ResumeLocale } from "~/config/data";
 import { siGithub } from "simple-icons";
 import { SimpleIcon } from "./simple-icon";
+import { getLocale, setLocale } from "~/paraglide/runtime";
+import { m } from "~/paraglide/messages";
 
-export function Nav({
-  locale,
-  lang,
-}: {
-  locale: ResumeLocale;
-  lang: "fr" | "en";
-}) {
+export function Nav() {
   const navLinks: {
     label: string;
     href: string;
     icon: React.ReactNode;
   }[] = [
     {
-      label: locale.ui.nav.experience,
+      label: m.nav_experience(),
       href: "#experience",
       icon: <BriefcaseIcon size={20} />,
     },
     {
-      label: locale.ui.nav.education,
+      label: m.nav_education(),
       href: "#education",
       icon: <GraduationCap size={20} />,
     },
     {
-      label: locale.ui.nav.skills,
+      label: m.nav_skills(),
       href: "#skills",
       icon: <ChartNoAxesCombined size={20} />,
     },
     {
-      label: locale.ui.nav.contact,
+      label: m.nav_contact(),
       href: "#contact",
       icon: <MailCheckIcon size={20} />,
     },
@@ -73,7 +68,7 @@ export function Nav({
             <a href="https://github.com/Nico-Mugi" target="_blank">
               <button
                 className="text-sm font-medium px-3 py-1.5 rounded-lg border border-neutral-700 text-neutral-400 hover:border-[#8FAF83] hover:text-white transition-all duration-200"
-                aria-label="Switch language"
+                aria-label="GitHub profile"
               >
                 <SimpleIcon
                   path={siGithub.path}
@@ -82,27 +77,21 @@ export function Nav({
                 />
               </button>
             </a>
-            <Link
-              to="/"
-              search={({ lang }) => ({ lang: lang === "en" ? "fr" : "en" })}
+            <button
+              type="button"
+              onClick={() => setLocale(getLocale() === "en" ? "fr" : "en")}
+              className="text-sm font-medium px-3 py-1.5 rounded-lg border border-neutral-700 text-neutral-400 hover:border-[#8FAF83] hover:text-white transition-all duration-200"
+              aria-label="Switch language"
             >
-              <button
-                className="text-sm font-medium px-3 py-1.5 rounded-lg border border-neutral-700 text-neutral-400 hover:border-[#8FAF83] hover:text-white transition-all duration-200"
-                aria-label="Switch language"
-              >
-                {lang === "en" ? "FR" : "EN"}
-              </button>
-            </Link>
+              {getLocale() === "en" ? "FR" : "EN"}
+            </button>
 
-            <Link
-              to="/cv"
-              search={({ lang }) => ({ lang: lang === "en" ? "en" : "fr" })}
-            >
+            <Link to="/cv">
               <button
                 type="button"
                 className="text-sm font-medium px-4 py-1.5 rounded-lg border border-neutral-700 text-neutral-300 hover:border-[#8FAF83] hover:text-white transition-all duration-200"
               >
-                {locale.ui.nav.viewCv}
+                {m.nav_view_cv()}
               </button>
             </Link>
           </div>

@@ -1,15 +1,4 @@
-import {
-  Code2Icon,
-  DatabaseIcon,
-  LayersIcon,
-  LucideIcon,
-  MailIcon,
-  MapPinIcon,
-  PhoneIcon,
-  ServerIcon,
-  ShieldCheckIcon,
-  ZapIcon,
-} from "lucide-react";
+import { LucideIcon, MailIcon, MapPinIcon, PhoneIcon } from "lucide-react";
 
 export interface SubEntry {
   company: string;
@@ -36,77 +25,7 @@ export interface EducationItem {
   periodShort: string;
 }
 
-export interface SkillGroup {
-  category: string;
-  icon: LucideIcon;
-  items: string[];
-}
-
-export interface UiLabels {
-  nav: {
-    experience: string;
-    education: string;
-    skills: string;
-    contact: string;
-    viewCv: string;
-    viewPortfolio: string;
-    print: string;
-    download: string;
-  };
-  hero: {
-    availableBadge: string;
-    contactCta: string;
-    viewCvCta: string;
-  };
-  sections: {
-    experienceTitle: string;
-    experienceSubtitle: string;
-    educationTitle: string;
-    skillsTitle: string;
-  };
-  experience: {
-    currentBadge: string;
-  };
-  contactSection: {
-    title: string;
-    titleAccent: string;
-    description: string;
-  };
-  contactLabels: {
-    email: string;
-    phone: string;
-    location: string;
-  };
-  footer: {
-    viewCv: string;
-  };
-  cv: {
-    sidebarContact: string;
-    sidebarLanguages: string;
-    sidebarSkills: string;
-    sidebarPm: string;
-    sidebarInterests: string;
-    sectionExperience: string;
-    sectionEducation: string;
-  };
-}
-
-export type ResumeLocale = BaseLocale & {
-  personal: {
-    title: string;
-    bio: string;
-  };
-  languages: { lang: string; level: string }[];
-  experience: ExperienceItem[];
-  education: EducationItem[];
-  cvSkillLines: string[];
-  portfolioSkillGroups: SkillGroup[];
-  projectManagementSkills: string[];
-  interests: string[];
-  ui: UiLabels;
-};
-
-interface BaseLocale {
+export type ResumeLocale = {
   personal: {
     firstName: string;
     lastName: string;
@@ -117,9 +36,11 @@ interface BaseLocale {
     email: { display: string; href: string; icon: LucideIcon };
     address: { full: string; city: string; icon: LucideIcon };
   };
-}
+  experience: ExperienceItem[];
+  education: EducationItem[];
+};
 
-const baseLocale: BaseLocale = {
+const baseLocale = {
   personal: {
     firstName: "Nicolas",
     lastName: "Thouvenin",
@@ -146,15 +67,6 @@ const baseLocale: BaseLocale = {
 
 export const fr = {
   ...baseLocale,
-  personal: {
-    ...baseLocale.personal,
-    title: "Ingénieur en Informatique & Consultant IT",
-    bio: "Spécialisé dans le développement web full-stack et la transformation digitale des entreprises. J'accompagne PME et startups dans la conception et le déploiement de solutions sur mesure, de l'idée à la production.",
-  },
-  languages: [
-    { lang: "Français", level: "Natif" },
-    { lang: "Anglais", level: "C2" },
-  ],
 
   experience: [
     {
@@ -253,138 +165,10 @@ export const fr = {
       periodShort: "2017 – 2020",
     },
   ],
-
-  cvSkillLines: [
-    "Web : JS natif, React.js, Next.js, Node.js",
-    "Styling : Tailwind CSS, CSS3",
-    "Logiciel : Python, .NET Core, C#",
-    "DBMS : PostgreSQL, Supabase, MSSQL",
-    "Déploiement : Vercel, Azure, Windows Server",
-    "Web Scraping : Puppeteer",
-    "Automatisation : Zapier, n8n",
-    "Outils : Git, Docker, Postman",
-  ],
-
-  portfolioSkillGroups: [
-    {
-      category: "Frontend",
-      icon: Code2Icon,
-      items: [
-        "React.js",
-        "Next.js",
-        "JavaScript",
-        "TypeScript",
-        "Tailwind CSS",
-        "CSS3",
-      ],
-    },
-    {
-      category: "Backend",
-      icon: ServerIcon,
-      items: ["Node.js", "Python", ".NET Core", "C#"],
-    },
-    {
-      category: "Bases de données",
-      icon: DatabaseIcon,
-      items: ["PostgreSQL", "Supabase", "MSSQL"],
-    },
-    {
-      category: "DevOps & Cloud",
-      icon: LayersIcon,
-      items: ["Git", "Docker", "Vercel", "Azure", "Windows Server"],
-    },
-    {
-      category: "Automatisation & Outils",
-      icon: ZapIcon,
-      items: ["Puppeteer", "Zapier", "n8n", "Postman"],
-    },
-    {
-      category: "Gestion de Projet",
-      icon: ShieldCheckIcon,
-      items: ["Scrum", "Kanban", "Jira", "Trello", "Architecture SI", "RGPD"],
-    },
-  ],
-
-  projectManagementSkills: [
-    "Méthodologies Agile (Scrum, Kanban)",
-    "Outils de gestion de projet (Jira, Trello)",
-    "Architecture du SI",
-    "Sécurité des projets et RGPD",
-    "Gestion budgétaire",
-    "Analyse des risques",
-    "Planification et organisation",
-    "Gestion des deadlines",
-  ],
-
-  interests: [
-    "Technologies, innovation et sciences",
-    "Voyages et découvertes culturelles",
-    "Sports et activités physiques",
-  ],
-
-  ui: {
-    nav: {
-      experience: "Expérience",
-      education: "Formation",
-      skills: "Compétences",
-      contact: "Contact",
-      viewCv: "Voir le CV →",
-      viewPortfolio: "Voir le Portfolio →",
-      print: "Imprimer",
-      download: "Télécharger",
-    },
-    hero: {
-      availableBadge: "Disponible pour missions",
-      contactCta: "Me contacter",
-      viewCvCta: "Voir mon CV",
-    },
-    sections: {
-      experienceTitle: "Expérience",
-      experienceSubtitle: "Parcours professionnel",
-      educationTitle: "Formation",
-      skillsTitle: "Compétences Techniques",
-    },
-    experience: {
-      currentBadge: "En cours",
-    },
-    contactSection: {
-      title: "Travaillons",
-      titleAccent: "ensemble",
-      description:
-        "Disponible pour des missions freelance, des projets innovants ou des opportunités en CDI. N'hésitez pas à me contacter.",
-    },
-    contactLabels: {
-      email: "Email",
-      phone: "Téléphone",
-      location: "Localisation",
-    },
-    footer: {
-      viewCv: "Consulter le CV →",
-    },
-    cv: {
-      sidebarContact: "Coordonnées",
-      sidebarLanguages: "Langues",
-      sidebarSkills: "Compétences Techniques",
-      sidebarPm: "Gestion de Projet",
-      sidebarInterests: "Centres d'Intérêt",
-      sectionExperience: "Expérience Professionnelle",
-      sectionEducation: "Formation",
-    },
-  },
 } satisfies ResumeLocale;
 
 export const en = {
   ...baseLocale,
-  personal: {
-    ...baseLocale.personal,
-    title: "Software Engineer & IT Consultant",
-    bio: "Specialised in full-stack web development and digital transformation. I help SMEs and startups design and deliver tailored solutions, from idea to production.",
-  },
-
-  languages: [
-    { lang: "French", level: "Native" },
-    { lang: "English", level: "C2" },
-  ],
 
   experience: [
     {
@@ -483,123 +267,4 @@ export const en = {
       periodShort: "2017 – 2020",
     },
   ],
-
-  cvSkillLines: [
-    "Web: Native JS, React.js, Next.js, Node.js",
-    "Styling: Tailwind CSS, CSS3",
-    "Software: Python, .NET Core, C#",
-    "DBMS: PostgreSQL, Supabase, MSSQL",
-    "Deployment: Vercel, Azure, Windows Server",
-    "Web Scraping: Puppeteer",
-    "Automation: Zapier, n8n",
-    "Tools: Git, Docker, Postman",
-  ],
-
-  portfolioSkillGroups: [
-    {
-      category: "Frontend",
-      icon: Code2Icon,
-      items: [
-        "React.js",
-        "Next.js",
-        "JavaScript",
-        "TypeScript",
-        "Tailwind CSS",
-        "CSS3",
-      ],
-    },
-    {
-      category: "Backend",
-      icon: ServerIcon,
-      items: ["Node.js", "Python", ".NET Core", "C#"],
-    },
-    {
-      category: "Databases",
-      icon: DatabaseIcon,
-      items: ["PostgreSQL", "Supabase", "MSSQL"],
-    },
-    {
-      category: "DevOps & Cloud",
-      icon: LayersIcon,
-      items: ["Git", "Docker", "Vercel", "Azure", "Windows Server"],
-    },
-    {
-      category: "Automation & Tools",
-      icon: ZapIcon,
-
-      items: ["Puppeteer", "Zapier", "n8n", "Postman"],
-    },
-    {
-      category: "Project Management",
-      icon: ShieldCheckIcon,
-      items: ["Scrum", "Kanban", "Jira", "Trello", "IS Architecture", "GDPR"],
-    },
-  ],
-
-  projectManagementSkills: [
-    "Agile methodologies (Scrum, Kanban)",
-    "Project management tools (Jira, Trello)",
-    "IS architecture",
-    "Project security & GDPR compliance",
-    "Budget management",
-    "Risk analysis",
-    "Planning and organisation",
-    "Deadline management",
-  ],
-
-  interests: [
-    "Technology, innovation and science",
-    "Travel and cultural discovery",
-    "Sports and physical activities",
-  ],
-
-  ui: {
-    nav: {
-      experience: "Experience",
-      education: "Education",
-      skills: "Skills",
-      contact: "Contact",
-      viewCv: "View Resume →",
-      viewPortfolio: "View Portfolio →",
-      print: "Print",
-      download: "Download",
-    },
-    hero: {
-      availableBadge: "Available for projects",
-      contactCta: "Get in touch",
-      viewCvCta: "View my Resume",
-    },
-    sections: {
-      experienceTitle: "Experience",
-      experienceSubtitle: "Professional background",
-      educationTitle: "Education",
-      skillsTitle: "Technical Skills",
-    },
-    experience: {
-      currentBadge: "Current",
-    },
-    contactSection: {
-      title: "Let's work",
-      titleAccent: "together",
-      description:
-        "Available for freelance projects, innovative ventures, or full-time opportunities. Don't hesitate to reach out.",
-    },
-    contactLabels: {
-      email: "Email",
-      phone: "Phone",
-      location: "Location",
-    },
-    footer: {
-      viewCv: "View CV →",
-    },
-    cv: {
-      sidebarContact: "Contact",
-      sidebarLanguages: "Languages",
-      sidebarSkills: "Technical Skills",
-      sidebarPm: "Project Management",
-      sidebarInterests: "Interests",
-      sectionExperience: "Professional Experience",
-      sectionEducation: "Education",
-    },
-  },
 } satisfies ResumeLocale;

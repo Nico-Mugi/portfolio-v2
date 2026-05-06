@@ -1,11 +1,12 @@
 import { ResumeLocale } from "~/config/data";
 import { SectionHeading } from "./section-heading";
+import { m } from "~/paraglide/messages";
 
 export function EducationSection({ locale }: { locale: ResumeLocale }) {
   return (
     <section id="education" className="bg-neutral-950 py-24">
       <div className="max-w-5xl mx-auto px-6">
-        <SectionHeading>{locale.ui.sections.educationTitle}</SectionHeading>
+        <SectionHeading>{m.sections_education_title()}</SectionHeading>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
           {locale.education.map((edu, i) => (

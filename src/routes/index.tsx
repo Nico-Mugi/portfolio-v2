@@ -7,19 +7,9 @@ import { ExperienceSection } from "~/components/portfolio/experience";
 import { HeroSection } from "~/components/portfolio/hero";
 import { SkillsSection } from "~/components/portfolio/skills";
 import { fr, en } from "~/config/data";
-import { isLocale } from "~/helpers/isLocale";
+import { getLocale } from "~/paraglide/runtime";
 
-export const Route = createFileRoute("/{-$locale}/")({
-  beforeLoad: ({ params }) => {
-    const locale = params.locale || "fr";
-    const _isLocale = isLocale(locale);
-
-    if (params.locale && !_isLocale) {
-      throw new Error("Invalid locale");
-    }
-
-    return { locale };
-  },
+export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Nicolas Thouvenin - Portfolio" },
@@ -34,9 +24,7 @@ export const Route = createFileRoute("/{-$locale}/")({
 });
 
 function Portfolio() {
-  const { locale: paramLocale } = Route.useParams();
-  const locale = paramLocale === "en" ? en : fr;
-  const lang: "fr" | "en" = paramLocale === "en" ? "en" : "fr";
+  const locale = getLocale() === "en" ? en : fr;
 
   return (
     <>
@@ -44,13 +32,13 @@ function Portfolio() {
         html, body { background-color: #0a0a0a; scroll-behavior: smooth; }
       `}</style>
       <div className="bg-neutral-950 text-white min-h-screen">
-        <Nav locale={locale} lang={lang} />
-        <HeroSection locale={locale} />
+        <Nav />
+        <HeroSection />
         <ExperienceSection locale={locale} />
         <EducationSection locale={locale} />
-        <SkillsSection locale={locale} />
-        <ContactSection locale={locale} />
-        <Footer locale={locale} />
+        <SkillsSection />
+        <ContactSection />
+        <Footer />
       </div>
     </>
   );
