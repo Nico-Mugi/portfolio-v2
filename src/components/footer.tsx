@@ -1,4 +1,3 @@
-import { ResumeLocale } from "~/config/data";
 import { Logo, LogoVertical } from "./logo";
 import { Link } from "@tanstack/react-router";
 import { m } from "~/paraglide/messages";

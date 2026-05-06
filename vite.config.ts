@@ -24,7 +24,7 @@ const config = defineConfig({
       strategy: ["url", "cookie", "preferredLanguage", "baseLocale"],
       urlPatterns: translatedPathnames,
     }),
-    //cloudflare({ viteEnvironment: { name: "ssr" } }),
+    cloudflare({ viteEnvironment: { name: "ssr" } }),
     tailwindcss(),
     tanstackStart({
       pages: prerenderRoutes,
