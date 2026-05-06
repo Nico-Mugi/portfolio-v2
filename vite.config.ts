@@ -4,8 +4,8 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { cloudflare } from "@cloudflare/vite-plugin";
-import { translatedPathnames } from "./utils/translated-pathnames";
-import { prerenderRoutes } from "./utils/prerender";
+import { translatedPathnames } from "./src/utils/translated-pathnames";
+import { prerenderRoutes } from "./src/utils/prerender";
 
 const config = defineConfig({
   server: {
