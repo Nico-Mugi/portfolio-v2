@@ -7,11 +7,19 @@ import { ExperienceSection } from "~/components/portfolio/experience";
 import { HeroSection } from "~/components/portfolio/hero";
 import { SkillsSection } from "~/components/portfolio/skills";
 import { fr, en } from "~/config/data";
+import { isLocale } from "~/helpers/isLocale";
 
-export const Route = createFileRoute("/")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    lang: (search.lang === "en" ? "en" : "fr") as "fr" | "en",
-  }),
+export const Route = createFileRoute("/{-$locale}/")({
+  beforeLoad: ({ params }) => {
+    const locale = params.locale || "fr";
+    const _isLocale = isLocale(locale);
+
+    if (params.locale && !_isLocale) {
+      throw new Error("Invalid locale");
+    }
+
+    return { locale };
+  },
   head: () => ({
     meta: [
       { title: "Nicolas Thouvenin - Portfolio" },
@@ -26,8 +34,9 @@ export const Route = createFileRoute("/")({
 });
 
 function Portfolio() {
-  const { lang } = Route.useSearch();
-  const locale = lang === "en" ? en : fr;
+  const { locale: paramLocale } = Route.useParams();
+  const locale = paramLocale === "en" ? en : fr;
+  const lang: "fr" | "en" = paramLocale === "en" ? "en" : "fr";
 
   return (
     <>

@@ -8,11 +8,19 @@ import {
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { fr, en, type ResumeLocale } from "~/config/data";
 import { Logo } from "~/components/logo";
+import { isLocale } from "~/helpers/isLocale";
 
-export const Route = createFileRoute("/cv/")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    lang: (search.lang === "en" ? "en" : "fr") as "fr" | "en",
-  }),
+export const Route = createFileRoute("/{-$locale}/cv/")({
+  beforeLoad: ({ params }) => {
+    const locale = params.locale || "fr";
+    const _isLocale = isLocale(locale);
+
+    if (params.locale && !_isLocale) {
+      throw new Error("Invalid locale");
+    }
+
+    return { locale };
+  },
   head: () => ({
     meta: [
       { title: "Nicolas Thouvenin - CV" },
@@ -194,17 +202,16 @@ function Nav({ locale, lang }: { locale: ResumeLocale; lang: "fr" | "en" }) {
     <div className="fixed top-0 inset-x-0 h-screen max-h-screen max-w-full w-full print:hidden z-50">
       <header className="bg-neutral-950/80 backdrop-blur-md border-b border-white/5">
         <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link
-            to="/"
-            search={({ lang }) => ({ lang: lang === "en" ? "fr" : "en" })}
-            className="h-full w-24 flex items-center"
-          >
+          <Link to="/{-$locale}" className="h-full w-24 flex items-center">
             <Logo />
           </Link>
           <div className="flex items-center gap-2">
             <Link
-              to="/cv"
-              search={({ lang }) => ({ lang: lang === "en" ? "fr" : "en" })}
+              to="/{-$locale}/cv"
+              params={(prev) => ({
+                ...prev,
+                locale: prev.locale === "en" ? "fr" : "en",
+              })}
               aria-label="Switch language"
             >
               <button
@@ -215,8 +222,7 @@ function Nav({ locale, lang }: { locale: ResumeLocale; lang: "fr" | "en" }) {
               </button>
             </Link>
             <Link
-              to="/"
-              search={({ lang }) => ({ lang: lang === "en" ? "fr" : "en" })}
+              to="/{-$locale}"
               className="text-sm font-medium px-4 py-1.5 rounded-lg border border-neutral-700 text-neutral-300 hover:border-[#8FAF83] hover:text-white transition-all duration-200"
             >
               {locale.ui.nav.viewPortfolio}
@@ -246,8 +252,9 @@ function Nav({ locale, lang }: { locale: ResumeLocale; lang: "fr" | "en" }) {
 }
 
 function NicolasThouveninCV() {
-  const { lang } = Route.useSearch();
-  const locale: ResumeLocale = lang === "en" ? en : fr;
+  const { locale: paramLocale } = Route.useParams();
+  const locale: ResumeLocale = paramLocale === "en" ? en : fr;
+  const lang: "fr" | "en" = paramLocale === "en" ? "en" : "fr";
 
   return (
     <div
