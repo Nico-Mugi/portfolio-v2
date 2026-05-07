@@ -13,7 +13,7 @@ import { ContactItem } from "~/components/cv/contact-item";
 import { LangItem } from "~/components/cv/lang-item";
 import { SkillItem } from "~/components/cv/skill-item";
 
-export const Route = createFileRoute("/cv/")({
+export const Route = createFileRoute("/cv")({
   head: () => ({
     meta: [
       { title: "Nicolas Thouvenin - CV" },

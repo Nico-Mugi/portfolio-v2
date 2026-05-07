@@ -16,23 +16,23 @@ type TranslatedPathname = {
 };
 
 function toUrlPattern(path: string) {
-  const url = path
-    // catch-all
-    .replace(/\/\$$/, "/:path(.*)?")
-    // optional parameters: {-$param}
-    .replace(/\{-\$([a-zA-Z0-9_]+)\}/g, ":$1?")
-    // named parameters: $param
-    .replace(/\$([a-zA-Z0-9_]+)/g, ":$1")
-    // remove trailing slash
-    .replace(/\/+$/, "");
-  console.log("toUrlPattern result", url);
-  return url;
+  return (
+    path
+      // catch-all
+      .replace(/\/\$$/, '/:path(.*)?')
+      // optional parameters: {-$param}
+      .replace(/\{-\$([a-zA-Z0-9_]+)\}/g, ':$1?')
+      // named parameters: $param
+      .replace(/\$([a-zA-Z0-9_]+)/g, ':$1')
+      // remove trailing slash
+      .replace(/\/+$/, '')
+  )
 }
 
 function createTranslatedPathnames(
   input: Record<PublicRoutePath, Record<Locale, string>>,
 ): TranslatedPathname[] {
-  const result = Object.entries(input).map(([pattern, locales]) => ({
+  return Object.entries(input).map(([pattern, locales]) => ({
     pattern: toUrlPattern(pattern),
     localized: Object.entries(locales).map(
       ([locale, path]) =>
@@ -41,19 +41,7 @@ function createTranslatedPathnames(
           string,
         ],
     ),
-  }));
-  console.log("createTranslatedPathnames result", result);
-  console.log(
-    "createTranslatedPathnames results",
-    result.map(({ pattern, localized }) => ({
-      pattern,
-      localized: localized.map(([locale, path]) => {
-        console.log("Localized path", { locale, path });
-        return { locale, path };
-      }),
-    })),
-  );
-  return result;
+  }))
 }
 
 export const translatedPathnames = createTranslatedPathnames({
