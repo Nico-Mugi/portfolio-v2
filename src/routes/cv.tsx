@@ -1,5 +1,5 @@
 import { DownloadIcon, PrinterIcon } from "lucide-react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { ClientOnly, createFileRoute, Link } from "@tanstack/react-router";
 import { fr, en } from "~/config/data";
 import { Logo } from "~/components/logo";
 import { getLocale, setLocale } from "~/paraglide/runtime";
@@ -66,13 +66,15 @@ function Nav() {
           >
             <PrinterIcon size={20} />
           </a>
-          <a
-            download={`Nicolas_Thouvenin_${getLocale() === "en" ? "Resume" : "CV"}.pdf`}
-            href={`/files/Nicolas_Thouvenin_${getLocale() === "en" ? "Resume" : "CV"}.pdf`}
-            className="text-neutral-300 rounded-full bg-foreground p-6 hover:text-neutral-400 transition-colors duration-200"
-          >
-            <DownloadIcon size={20} />
-          </a>
+          <ClientOnly>
+            <a
+              download={`Nicolas_Thouvenin_${getLocale() === "en" ? "Resume" : "CV"}.pdf`}
+              href={`/files/Nicolas_Thouvenin_${getLocale() === "en" ? "Resume" : "CV"}.pdf`}
+              className="text-neutral-300 rounded-full bg-foreground p-6 hover:text-neutral-400 transition-colors duration-200"
+            >
+              <DownloadIcon size={20} />
+            </a>
+          </ClientOnly>
         </nav>
       </aside>
     </div>

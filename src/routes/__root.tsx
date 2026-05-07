@@ -4,6 +4,8 @@ import { getLocale } from "../paraglide/runtime.js";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
 import appCss from "../styles.css?url";
+import { DefaultCatchBoundary } from "~/components/default-catch-boundary.js";
+import { NotFound } from "~/components/not-found.js";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -59,6 +61,8 @@ export const Route = createRootRoute({
       { rel: "stylesheet", href: appCss },
     ],
   }),
+  errorComponent: DefaultCatchBoundary,
+  notFoundComponent: () => <NotFound />,
   shellComponent: RootDocument,
 });
 
