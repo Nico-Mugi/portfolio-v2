@@ -135,4 +135,5 @@
 
 @page {
   margin: 0; /* Remove default margins for printing */
+  size: A4; /* Set the page size to A4 */
 }

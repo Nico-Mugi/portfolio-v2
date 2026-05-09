@@ -74,7 +74,9 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       </head>
       <body>
         {children}
-        <TanStackRouterDevtools />
+        <div className="print:hidden">
+          <TanStackRouterDevtools />
+        </div>
         <Scripts />
       </body>
     </html>

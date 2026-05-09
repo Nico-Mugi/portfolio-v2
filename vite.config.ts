@@ -6,6 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { cloudflare } from "@cloudflare/vite-plugin";
 import { translatedPathnames } from "./src/utils/translated-pathnames";
 import { prerenderRoutes } from "./src/utils/prerender";
+import watchPrintToPdf from "./vite-custom-plugins/watch-print-to-pdf";
 
 const config = defineConfig({
   server: {
@@ -23,6 +24,40 @@ const config = defineConfig({
       cookieName: "PARAGLIDE_LOCALE",
       strategy: ["url", "cookie", "preferredLanguage", "baseLocale"],
       urlPatterns: translatedPathnames,
+    }),
+    watchPrintToPdf({
+      pages: [
+        {
+          url: "http://localhost:3000/fr/cv",
+          outPath: "./public/files/Nicolas_Thouvenin_CV.pdf",
+          watchFile: "src/routes/cv.tsx",
+          pdf: {
+            format: "A4",
+            printBackground: true,
+            margin: {
+              top: "0mm",
+              bottom: "0mm",
+              left: "0mm",
+              right: "0mm",
+            },
+          },
+        },
+        {
+          url: "http://localhost:3000/en/resume",
+          outPath: "./public/files/Nicolas_Thouvenin_Resume.pdf",
+          watchFile: "src/routes/cv.tsx",
+          pdf: {
+            format: "A4",
+            printBackground: true,
+            margin: {
+              top: "0mm",
+              bottom: "0mm",
+              left: "0mm",
+              right: "0mm",
+            },
+          },
+        },
+      ],
     }),
     cloudflare({ viteEnvironment: { name: "ssr" } }),
     tailwindcss(),
