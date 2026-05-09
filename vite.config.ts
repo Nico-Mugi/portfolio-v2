@@ -28,7 +28,7 @@ const config = defineConfig({
     watchPrintToPdf({
       pages: [
         {
-          url: "http://localhost:3000/fr/cv",
+          url: "/fr/cv",
           outPath: "./public/files/Nicolas_Thouvenin_CV.pdf",
           watchFile: "src/routes/cv.tsx",
           pdf: {
@@ -43,7 +43,7 @@ const config = defineConfig({
           },
         },
         {
-          url: "http://localhost:3000/en/resume",
+          url: "/en/resume",
           outPath: "./public/files/Nicolas_Thouvenin_Resume.pdf",
           watchFile: "src/routes/cv.tsx",
           pdf: {

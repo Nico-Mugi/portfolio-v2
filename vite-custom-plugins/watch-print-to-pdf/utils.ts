@@ -1,4 +1,4 @@
-import type { ViteDevServer, ModuleNode } from "vite";
+import type { ViteDevServer, ModuleNode, ResolvedConfig } from "vite";
 
 /** Walk Vite's module graph and collect every transitive dependency ID. */
 function collectDependencyIds(
@@ -49,4 +49,24 @@ export async function isInDependencyTree(
 
   const deps = collectDependencyIds(entryId, server);
   return [...deps].some((id) => id.replace(/\\/g, "/") === normalized);
+}
+
+/** Build the dev-server base URL from Vite's resolved config. */
+export function resolveServerBaseUrl(config: ResolvedConfig): string {
+  const protocol = config.server.https ? "https" : "http";
+  // `host` can be a boolean (true → "0.0.0.0") or a string. We always want
+  // something a browser/Playwright can reach, so fall back to "localhost".
+  const rawHost = config.server.host;
+  const host =
+    rawHost === true || rawHost === "0.0.0.0" || rawHost === "::"
+      ? "localhost"
+      : (rawHost ?? "localhost");
+  const port = config.server.port ?? 3000;
+  return `${protocol}://${host}:${port}`;
+}
+
+/** Prefix relative paths with the dev-server base URL; leave full URLs alone. */
+export function resolvePageUrl(url: string, baseUrl: string): string {
+  if (/^https?:\/\//i.test(url)) return url; // already absolute
+  return `${baseUrl}${url.startsWith("/") ? "" : "/"}${url}`;
 }
