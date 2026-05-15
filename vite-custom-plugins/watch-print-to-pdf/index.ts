@@ -24,6 +24,9 @@ export default function watchPrintToPdf(option: UserConfig): Plugin {
       });
 
       server.watcher.on("change", async (changedFile: string) => {
+        // Let the caller filter out irrelevant files early.
+        if (option.filter && !option.filter(changedFile)) return;
+
         // For each page, check whether the changed file falls inside that page's watchFile dependency tree.
         const matchResults = await Promise.all(
           option.pages.map((page) =>

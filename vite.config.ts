@@ -26,6 +26,13 @@ const config = defineConfig({
       urlPatterns: translatedPathnames,
     }),
     watchPrintToPdf({
+      // Optional: ignore node_modules or generated files
+      filter: (f) =>
+        !f.includes("node_modules") &&
+        !f.includes("dist") &&
+        !f.includes("build") &&
+        !f.includes("public/files") &&
+        !f.includes("src/paraglide"),
       pages: [
         {
           url: "/fr/cv",

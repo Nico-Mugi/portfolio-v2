@@ -1,6 +1,5 @@
 import { DownloadIcon, PrinterIcon } from "lucide-react";
 import { createFileRoute } from "@tanstack/react-router";
-import { fr, en } from "~/config/data";
 import { getLocale } from "~/paraglide/runtime";
 import { m } from "~/paraglide/messages";
 import { contactItems } from "~/config/contactItems";
@@ -37,8 +36,6 @@ export const Route = createFileRoute("/cv")({
 });
 
 function NicolasThouveninCV() {
-  const locale = getLocale() === "en" ? en : fr;
-
   const languages = [
     { lang: m.language_1_name(), level: m.language_1_level() },
     { lang: m.language_2_name(), level: m.language_2_level() },
@@ -70,6 +67,75 @@ function NicolasThouveninCV() {
     m.interest_tech(),
     m.interest_travel(),
     m.interest_sports(),
+  ];
+
+  const locale_experience = [
+    {
+      title: m.experience_1_position(),
+      company: m.experience_1_company(),
+      period: m.experience_1_date(),
+      subEntries: [
+        {
+          company: m.experience_1_sub_1_company(),
+          period: m.experience_1_sub_1_date(),
+          bullets: [
+            m.experience_1_sub_1_bullet_1(),
+            m.experience_1_sub_1_bullet_2(),
+            m.experience_1_sub_1_bullet_3(),
+            m.experience_1_sub_1_bullet_4(),
+            m.experience_1_sub_1_bullet_5(),
+            m.experience_1_sub_1_bullet_6(),
+            m.experience_1_sub_1_bullet_7(),
+            m.experience_1_sub_1_bullet_8(),
+            m.experience_1_sub_1_bullet_9(),
+            m.experience_1_sub_1_bullet_10(),
+            m.experience_1_sub_1_bullet_11(),
+          ],
+        },
+        {
+          company: m.experience_1_sub_2_company(),
+          period: m.experience_1_sub_2_date(),
+          bullets: [
+            m.experience_1_sub_2_bullet_1(),
+            m.experience_1_sub_2_bullet_2(),
+          ],
+        },
+      ],
+    },
+    {
+      title: m.experience_2_position(),
+      company: m.experience_2_company(),
+      period: m.experience_2_date(),
+      bullets: [
+        m.experience_2_bullet_1(),
+        m.experience_2_bullet_2(),
+        m.experience_2_bullet_3(),
+      ],
+    },
+    {
+      title: m.experience_3_position(),
+      company: m.experience_3_company(),
+      period: m.experience_3_date(),
+      bullets: [m.experience_3_bullet_1(), m.experience_3_bullet_2()],
+    },
+  ];
+
+  const locale_education = [
+    {
+      degree: m.education_1_degree(),
+      school: m.education_1_school(),
+      period: m.education_1_date(),
+    },
+    {
+      degree: m.education_2_degree(),
+      school: m.education_2_school(),
+      period: m.education_2_date(),
+    },
+    {
+      degree: m.education_3_degree(),
+      school: m.education_3_school(),
+      period: m.education_3_date(),
+    },
   ];
 
   return (
@@ -162,7 +228,7 @@ function NicolasThouveninCV() {
           <div className="px-5 pt-5 bg-white flex flex-col gap-5">
             <div className="flex flex-col gap-3">
               <SectionTitle>{m.cv_section_experience()}</SectionTitle>
-              {locale.experience.map((exp) => (
+              {locale_experience.map((exp) => (
                 <ExperienceEntry
                   key={exp.company}
                   title={exp.title}
@@ -187,7 +253,7 @@ function NicolasThouveninCV() {
             </div>
             <div>
               <SectionTitle>{m.cv_section_education()}</SectionTitle>
-              {locale.education.map((edu) => (
+              {locale_education.map((edu) => (
                 <EduEntry
                   key={edu.school}
                   degree={edu.degree}

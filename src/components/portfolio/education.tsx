@@ -1,15 +1,32 @@
-import { ResumeLocale } from "~/config/data";
 import { SectionHeading } from "./section-heading";
 import { m } from "~/paraglide/messages";
 
-export function EducationSection({ locale }: { locale: ResumeLocale }) {
+export function EducationSection() {
+  const locale_education = [
+    {
+      degreeShort: m.education_1_degree(),
+      school: m.education_1_school(),
+      periodShort: m.education_1_date(),
+    },
+    {
+      degreeShort: m.education_2_degree(),
+      school: m.education_2_school(),
+      periodShort: m.education_2_date(),
+    },
+    {
+      degreeShort: m.education_3_degree(),
+      school: m.education_3_school(),
+      periodShort: m.education_3_date(),
+    },
+  ];
+
   return (
     <section id="education" className="bg-neutral-950 py-24">
       <div className="max-w-5xl mx-auto px-6">
         <SectionHeading>{m.sections_education_title()}</SectionHeading>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
-          {locale.education.map((edu, i) => (
+          {locale_education.map((edu, i) => (
             <div
               key={edu.school}
               className="relative bg-neutral-900 border border-neutral-800 rounded-2xl p-6 overflow-hidden hover:border-[#8FAF83]/30 transition-colors duration-300 group"

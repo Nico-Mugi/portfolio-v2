@@ -1,6 +1,12 @@
 import type { Page } from "playwright";
 
 export interface UserConfig {
+  /**
+   * Optional filter: return `false` to ignore a particular changed file
+   * even if it appears in the dependency tree.
+   * Defaults to accepting every file.
+   */
+  filter?: (changedFile: string) => boolean;
   pages: {
     /**
      * Exported PDF path

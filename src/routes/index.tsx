@@ -12,9 +12,7 @@ import { EducationSection } from "~/components/portfolio/education";
 import { ExperienceSection } from "~/components/portfolio/experience";
 import { HeroSection } from "~/components/portfolio/hero";
 import { SkillsSection } from "~/components/portfolio/skills";
-import { fr, en } from "~/config/data";
 import { m } from "~/paraglide/messages";
-import { getLocale } from "~/paraglide/runtime";
 import { seo } from "~/utils/seo";
 
 export const Route = createFileRoute("/")({
@@ -34,8 +32,6 @@ export const Route = createFileRoute("/")({
 });
 
 function Portfolio() {
-  const locale = getLocale() === "en" ? en : fr;
-
   return (
     <div className="bg-neutral-950 text-white min-h-screen">
       <Nav
@@ -67,8 +63,8 @@ function Portfolio() {
         }}
       />
       <HeroSection />
-      <ExperienceSection locale={locale} />
-      <EducationSection locale={locale} />
+      <ExperienceSection />
+      <EducationSection />
       <SkillsSection />
       <ContactSection />
       <Footer />

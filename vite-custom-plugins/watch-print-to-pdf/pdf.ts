@@ -1,7 +1,7 @@
 import type { UserConfig } from "./types";
 import { chromium } from "playwright";
 
-export async function exportPDF(option: Required<UserConfig>) {
+export async function exportPDF(option: Required<Omit<UserConfig, "filter">>) {
   if (
     !option.pages ||
     option.pages.length === 0 ||
