@@ -1,10 +1,5 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
-  "example_message": "Hello world {username}",
-  "server_message": "Server message {emoji}",
-  "about_message": "About message",
-  "home_page": "Home page",
-  "about_page": "About page",
   "personal_title": "Software Engineer & IT Consultant",
   "personal_bio": "Specialised in full-stack web development and digital transformation. I help SMEs and startups design and deliver tailored solutions, from idea to production.",
   "nav_experience": "Experience",

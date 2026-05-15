@@ -63,6 +63,9 @@ const config = defineConfig({
     tailwindcss(),
     tanstackStart({
       pages: prerenderRoutes,
+      prerender: {
+        filter: ({ path }) => !path.startsWith("/files"), // don't prerender the PDF files
+      },
     }),
     // react's vite plugin must come after start's vite plugin
     viteReact(),

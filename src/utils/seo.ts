@@ -3,11 +3,15 @@ export const seo = ({
   description,
   keywords,
   image,
+  url,
+  site_name,
 }: {
   title: string;
   description?: string;
   image?: string;
   keywords?: string;
+  url?: string;
+  site_name?: string;
 }) => {
   const tags = [
     { title },
@@ -15,11 +19,13 @@ export const seo = ({
     { name: "keywords", content: keywords },
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
-    // { name: "twitter:creator", content: "@tannerlinsley" },
-    // { name: "twitter:site", content: "@tannerlinsley" },
+    { name: "twitter:creator", content: "@Nico-Mugi" },
+    { name: "twitter:site", content: "@Nico-Mugi" },
     { name: "og:type", content: "website" },
     { name: "og:title", content: title },
     { name: "og:description", content: description },
+    { name: "og:url", content: url },
+    { name: "og:site_name", content: site_name },
     ...(image
       ? [
           { name: "twitter:image", content: image },

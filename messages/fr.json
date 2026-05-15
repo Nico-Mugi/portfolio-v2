@@ -1,10 +1,5 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
-  "example_message": "Bonjour {username}",
-  "server_message": "Message du serveur {emoji}",
-  "about_message": "À propos",
-  "home_page": "Page d'accueil",
-  "about_page": "À propos",
   "personal_title": "Ingénieur en Informatique & Consultant IT",
   "personal_bio": "Spécialisé dans le développement web full-stack et la transformation digitale des entreprises. J'accompagne PME et startups dans la conception et le déploiement de solutions sur mesure, de l'idée à la production.",
   "nav_experience": "Expérience",

@@ -1,4 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
+import {
+  BriefcaseIcon,
+  ChartNoAxesCombined,
+  GraduationCap,
+  MailCheckIcon,
+} from "lucide-react";
 import { Footer } from "~/components/footer";
 import { Nav } from "~/components/nav";
 import { ContactSection } from "~/components/portfolio/contact";
@@ -7,17 +13,21 @@ import { ExperienceSection } from "~/components/portfolio/experience";
 import { HeroSection } from "~/components/portfolio/hero";
 import { SkillsSection } from "~/components/portfolio/skills";
 import { fr, en } from "~/config/data";
+import { m } from "~/paraglide/messages";
 import { getLocale } from "~/paraglide/runtime";
+import { seo } from "~/utils/seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Nicolas Thouvenin - Portfolio" },
-      {
-        name: "description",
-        content:
+      ...seo({
+        title: "Nicolas Thouvenin - Portfolio",
+        description:
           "Portfolio de Nicolas Thouvenin, développeur web spécialisé en React et Node.js. Découvrez mon expérience, mes compétences et comment me contacter.",
-      },
+        image: "https://nicolas-thouvenin.dev/logos/vertical.png",
+        url: "https://nicolas-thouvenin.dev",
+        site_name: "Nicolas Thouvenin - Portfolio",
+      }),
     ],
   }),
   component: Portfolio,
@@ -27,19 +37,41 @@ function Portfolio() {
   const locale = getLocale() === "en" ? en : fr;
 
   return (
-    <>
-      <style>{`
-        html, body { background-color: #0a0a0a; scroll-behavior: smooth; }
-      `}</style>
-      <div className="bg-neutral-950 text-white min-h-screen">
-        <Nav />
-        <HeroSection />
-        <ExperienceSection locale={locale} />
-        <EducationSection locale={locale} />
-        <SkillsSection />
-        <ContactSection />
-        <Footer />
-      </div>
-    </>
+    <div className="bg-neutral-950 text-white min-h-screen">
+      <Nav
+        links={[
+          {
+            label: m.nav_experience(),
+            href: "#experience",
+            icon: <BriefcaseIcon size={20} />,
+          },
+          {
+            label: m.nav_education(),
+            href: "#education",
+            icon: <GraduationCap size={20} />,
+          },
+          {
+            label: m.nav_skills(),
+            href: "#skills",
+            icon: <ChartNoAxesCombined size={20} />,
+          },
+          {
+            label: m.nav_contact(),
+            href: "#contact",
+            icon: <MailCheckIcon size={20} />,
+          },
+        ]}
+        ctaLink={{
+          label: m.nav_view_cv(),
+          href: "/cv",
+        }}
+      />
+      <HeroSection />
+      <ExperienceSection locale={locale} />
+      <EducationSection locale={locale} />
+      <SkillsSection />
+      <ContactSection />
+      <Footer />
+    </div>
   );
 }

@@ -1,8 +1,7 @@
 import { DownloadIcon, PrinterIcon } from "lucide-react";
-import { ClientOnly, createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { fr, en } from "~/config/data";
-import { Logo } from "~/components/logo";
-import { getLocale, setLocale } from "~/paraglide/runtime";
+import { getLocale } from "~/paraglide/runtime";
 import { m } from "~/paraglide/messages";
 import { contactItems } from "~/config/contactItems";
 import { EduEntry } from "~/components/cv/edu-entry";
@@ -12,16 +11,20 @@ import { ExperienceEntry } from "~/components/cv/experience-entry";
 import { ContactItem } from "~/components/cv/contact-item";
 import { LangItem } from "~/components/cv/lang-item";
 import { SkillItem } from "~/components/cv/skill-item";
+import { Nav } from "~/components/nav";
+import { seo } from "~/utils/seo";
 
 export const Route = createFileRoute("/cv")({
   head: () => ({
     meta: [
-      { title: "Nicolas Thouvenin - CV" },
-      {
-        name: "description",
-        content:
+      ...seo({
+        title: "Nicolas Thouvenin - CV",
+        description:
           "CV de Nicolas Thouvenin, développeur web spécialisé en React et Node.js. Découvrez mon expérience, mes compétences et comment me contacter.",
-      },
+        image: "https://nicolas-thouvenin.dev/logos/vertical.png",
+        url: "https://nicolas-thouvenin.dev/cv",
+        site_name: "Nicolas Thouvenin - CV",
+      }),
     ],
     links: [
       {
@@ -32,54 +35,6 @@ export const Route = createFileRoute("/cv")({
   }),
   component: NicolasThouveninCV,
 });
-
-function Nav() {
-  return (
-    <div className="fixed top-0 inset-x-0 h-screen max-h-screen max-w-full w-full print:hidden z-50">
-      <header className="bg-neutral-950/80 backdrop-blur-md border-b border-white/5">
-        <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link to="/" className="h-full w-24 flex items-center">
-            <Logo />
-          </Link>
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setLocale(getLocale() === "en" ? "fr" : "en")}
-              aria-label="Switch language"
-              className="text-sm font-medium px-3 py-1.5 rounded-lg border border-neutral-700 text-neutral-400 hover:border-[#8FAF83] hover:text-white transition-all duration-200"
-            >
-              {getLocale() === "en" ? "FR" : "EN"}
-            </button>
-            <Link
-              to="/"
-              className="text-sm font-medium px-4 py-1.5 rounded-lg border border-neutral-700 text-neutral-300 hover:border-[#8FAF83] hover:text-white transition-all duration-200"
-            >
-              {m.nav_view_portfolio()}
-            </Link>
-          </div>
-        </div>
-      </header>
-      <aside className="h-full w-full relative">
-        <nav className="fixed bottom-4 left-4 flex flex-col items-center gap-2">
-          <a
-            onClick={() => window.print()}
-            className="text-neutral-300 cursor-pointer rounded-full bg-foreground p-6 hover:text-neutral-400 transition-colors duration-200"
-          >
-            <PrinterIcon size={20} />
-          </a>
-          <ClientOnly>
-            <a
-              download={`Nicolas_Thouvenin_${getLocale() === "en" ? "Resume" : "CV"}.pdf`}
-              href={`/files/Nicolas_Thouvenin_${getLocale() === "en" ? "Resume" : "CV"}.pdf`}
-              className="text-neutral-300 rounded-full bg-foreground p-6 hover:text-neutral-400 transition-colors duration-200"
-            >
-              <DownloadIcon size={20} />
-            </a>
-          </ClientOnly>
-        </nav>
-      </aside>
-    </div>
-  );
-}
 
 function NicolasThouveninCV() {
   const locale = getLocale() === "en" ? en : fr;
@@ -122,7 +77,25 @@ function NicolasThouveninCV() {
       className="min-w-fit py-24 bg-neutral-900 print:py-0 print:h-fit relative"
       style={{ printColorAdjust: "exact" }}
     >
-      <Nav />
+      <Nav
+        links={[
+          {
+            label: m.nav_print(),
+            onClick: () => window.print(),
+            icon: <PrinterIcon size={20} />,
+          },
+          {
+            label: m.nav_download(),
+            download: `Nicolas_Thouvenin_${getLocale() === "en" ? "Resume" : "CV"}.pdf`,
+            href: `/files/Nicolas_Thouvenin_${getLocale() === "en" ? "Resume" : "CV"}.pdf`,
+            icon: <DownloadIcon size={20} />,
+          },
+        ]}
+        ctaLink={{
+          label: m.nav_view_portfolio(),
+          href: "/",
+        }}
+      />
       <div className="aspect-210/297 w-[210mm] mx-auto bg-[#8FAF83] flex flex-row">
         <div className="flex flex-col gap-2">
           <div className="w-35 h-35 rounded-full border-3 border-white overflow-hidden shadow-xs mx-auto mt-2">

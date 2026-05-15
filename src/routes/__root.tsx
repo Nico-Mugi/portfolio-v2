@@ -6,6 +6,7 @@ import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import appCss from "../styles.css?url";
 import { DefaultCatchBoundary } from "~/components/default-catch-boundary.js";
 import { NotFound } from "~/components/not-found.js";
+import { seo } from "~/utils/seo.js";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -17,39 +18,14 @@ export const Route = createRootRoute({
         name: "viewport",
         content: "width=device-width, initial-scale=1",
       },
-      {
+      ...seo({
         title: "Nicolas Thouvenin - Portfolio",
-      },
-      {
-        name: "description",
-        content:
+        description:
           "Portfolio de Nicolas Thouvenin, développeur web spécialisé en React et Node.js. Découvrez mon expérience, mes compétences et comment me contacter.",
-      },
-      {
-        name: "og:title",
-        content: "Nicolas Thouvenin - Portfolio",
-      },
-      {
-        name: "og:description",
-        content:
-          "Portfolio de Nicolas Thouvenin, développeur web spécialisé en React et Node.js. Découvrez mon expérience, mes compétences et comment me contacter.",
-      },
-      {
-        name: "og:type",
-        content: "website",
-      },
-      {
-        name: "og:url",
-        content: "https://nicolas-thouvenin.dev",
-      },
-      {
-        name: "og:site_name",
-        content: "Nicolas Thouvenin - Portfolio",
-      },
-      {
-        name: "og:image",
-        content: "https://nicolas-thouvenin.dev/logos/vertical.png",
-      },
+        image: "https://nicolas-thouvenin.dev/logos/vertical.png",
+        url: "https://nicolas-thouvenin.dev",
+        site_name: "Nicolas Thouvenin - Portfolio",
+      }),
     ],
     links: [
       {
@@ -68,11 +44,11 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang={getLocale()}>
+    <html lang={getLocale()} className="bg-[#0a0a0a] scroll-smooth">
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="bg-[#0a0a0a] scroll-smooth">
         {children}
         <div className="print:hidden">
           <TanStackRouterDevtools />
