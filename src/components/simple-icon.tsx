@@ -5,6 +5,7 @@ interface SimpleIconProps {
   title: string;
   className?: string;
   size?: number;
+  color?: string;
 }
 
 export function SimpleIcon({
@@ -12,6 +13,7 @@ export function SimpleIcon({
   title,
   className,
   size = 16,
+  color = "currentColor",
 }: SimpleIconProps) {
   return (
     <svg
@@ -20,7 +22,7 @@ export function SimpleIcon({
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
-      fill="currentColor"
+      fill={color}
       aria-label={title}
       className={cn("shrink-0", className)}
     >

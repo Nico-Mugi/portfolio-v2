@@ -1,4 +1,4 @@
-import { DownloadIcon, PrinterIcon } from "lucide-react";
+import { DownloadIcon, PrinterIcon, GlobeCheckIcon } from "lucide-react";
 import { createFileRoute } from "@tanstack/react-router";
 import { getLocale } from "~/paraglide/runtime";
 import { m } from "~/paraglide/messages";
@@ -12,6 +12,9 @@ import { LangItem } from "~/components/cv/lang-item";
 import { SkillItem } from "~/components/cv/skill-item";
 import { Nav } from "~/components/nav";
 import { seo } from "~/utils/seo";
+import { SimpleIcon } from "~/components/simple-icon";
+import { ciLinkedin } from "~/components/custom-icons/linkedin";
+import { BoldMessage } from "~/components/paraglide/bold-message";
 
 export const Route = createFileRoute("/cv")({
   head: () => ({
@@ -79,27 +82,25 @@ function NicolasThouveninCV() {
           company: m.experience_1_sub_1_company(),
           period: m.experience_1_sub_1_date(),
           bullets: [
-            m.experience_1_sub_1_bullet_1(),
-            m.experience_1_sub_1_bullet_2(),
-            m.experience_1_sub_1_bullet_3(),
-            m.experience_1_sub_1_bullet_4(),
-            m.experience_1_sub_1_bullet_5(),
-            m.experience_1_sub_1_bullet_6(),
-            m.experience_1_sub_1_bullet_7(),
-            m.experience_1_sub_1_bullet_8(),
-            m.experience_1_sub_1_bullet_9(),
-            m.experience_1_sub_1_bullet_10(),
-            m.experience_1_sub_1_bullet_11(),
+            <BoldMessage message={m.experience_1_sub_1_bullet_1} />,
+            <BoldMessage message={m.experience_1_sub_1_bullet_2} />,
+            <BoldMessage message={m.experience_1_sub_1_bullet_3} />,
+            <BoldMessage message={m.experience_1_sub_1_bullet_4} />,
+            <BoldMessage message={m.experience_1_sub_1_bullet_5} />,
+            <BoldMessage message={m.experience_1_sub_1_bullet_6} />,
+            <BoldMessage message={m.experience_1_sub_1_bullet_7} />,
+            <BoldMessage message={m.experience_1_sub_1_bullet_8} />,
+            <BoldMessage message={m.experience_1_sub_1_bullet_9} />,
           ],
         },
-        {
-          company: m.experience_1_sub_2_company(),
-          period: m.experience_1_sub_2_date(),
-          bullets: [
-            m.experience_1_sub_2_bullet_1(),
-            m.experience_1_sub_2_bullet_2(),
-          ],
-        },
+        // {
+        //   company: m.experience_1_sub_2_company(),
+        //   period: m.experience_1_sub_2_date(),
+        //   bullets: [
+        //     m.experience_1_sub_2_bullet_1(),
+        //     m.experience_1_sub_2_bullet_2(),
+        //   ],
+        // },
       ],
     },
     {
@@ -107,16 +108,22 @@ function NicolasThouveninCV() {
       company: m.experience_2_company(),
       period: m.experience_2_date(),
       bullets: [
-        m.experience_2_bullet_1(),
-        m.experience_2_bullet_2(),
-        m.experience_2_bullet_3(),
+        <BoldMessage message={m.experience_2_bullet_1} />,
+        <BoldMessage message={m.experience_2_bullet_2} />,
+        <BoldMessage message={m.experience_2_bullet_3} />,
+        <BoldMessage message={m.experience_2_bullet_4} />,
       ],
     },
     {
       title: m.experience_3_position(),
       company: m.experience_3_company(),
       period: m.experience_3_date(),
-      bullets: [m.experience_3_bullet_1(), m.experience_3_bullet_2()],
+      bullets: [
+        <BoldMessage message={m.experience_3_bullet_1} />,
+        <BoldMessage message={m.experience_3_bullet_2} />,
+        <BoldMessage message={m.experience_3_bullet_3} />,
+        <BoldMessage message={m.experience_3_bullet_4} />,
+      ],
     },
   ];
 
@@ -176,7 +183,28 @@ function NicolasThouveninCV() {
           <div className="w-55 pt-5 bg-[#8FAF83] px-2 flex flex-col grow justify-between">
             <SideSection
               title={m.cv_sidebar_contact()}
-              items={contactItems.map((item) => (
+              items={[
+                ...contactItems,
+                {
+                  icon: GlobeCheckIcon,
+                  label: "website",
+                  value: "nicolas-thouvenin.dev",
+                  href: "https://nicolas-thouvenin.dev",
+                },
+                {
+                  icon: ({ size, color }: { size: number; color: string }) => (
+                    <SimpleIcon
+                      path={ciLinkedin.path}
+                      title={ciLinkedin.title}
+                      size={size}
+                      color={color}
+                    />
+                  ),
+                  label: "linkedin",
+                  value: "linkedin.com/in/nico-thouvenin",
+                  href: "https://linkedin.com/in/nico-thouvenin",
+                },
+              ].map((item) => (
                 <ContactItem
                   key={item.label}
                   icon={<item.icon size={13} color="white" />}

@@ -17,7 +17,12 @@ export const ContactItem = ({ icon, text, href }: ContactItemProps) => {
   );
   if (href) {
     return (
-      <a href={href} className="hover:underline">
+      <a
+        href={href}
+        className="hover:underline decoration-white"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         {content}
       </a>
     );

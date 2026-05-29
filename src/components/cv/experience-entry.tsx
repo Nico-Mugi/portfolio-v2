@@ -2,7 +2,7 @@ interface ExperienceEntryProps {
   title?: string;
   company: string;
   period: string;
-  bullets?: string[];
+  bullets?: React.ReactNode[];
   children?: React.ReactNode;
 }
 
@@ -34,7 +34,7 @@ export const ExperienceEntry = ({
         {bullets.map((b, i) => (
           <li
             key={i}
-            className="font-[Lato,sans-serif] text-[12.5px] text-gray-600 leading-[1.55]"
+            className="font-[Lato,sans-serif] text-[12px] text-gray-600 leading-tight"
           >
             {b}
           </li>
