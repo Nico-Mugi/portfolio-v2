@@ -46,9 +46,10 @@ function NicolasThouveninCV() {
 
   const cvSkillLines = [
     m.cv_skill_web(),
-    m.cv_skill_styling(),
     m.cv_skill_software(),
     m.cv_skill_dbms(),
+    m.cv_skill_orm(),
+    m.cv_skill_styling(),
     m.cv_skill_deployment(),
     m.cv_skill_scraping(),
     m.cv_skill_automation(),
@@ -63,20 +64,16 @@ function NicolasThouveninCV() {
     m.pm_skill_budget(),
     m.pm_skill_risk(),
     m.pm_skill_planning(),
-    m.pm_skill_deadlines(),
   ];
 
-  const interests = [
-    m.interest_tech(),
-    m.interest_travel(),
-    m.interest_sports(),
-  ];
+  const interests = [m.interest_tech(), m.interest_quantum_physics()];
 
   const locale_experience = [
     {
       title: m.experience_1_position(),
       company: m.experience_1_company(),
       period: m.experience_1_date(),
+      location: m.experience_1_location(),
       subEntries: [
         {
           company: m.experience_1_sub_1_company(),
@@ -107,6 +104,7 @@ function NicolasThouveninCV() {
       title: m.experience_2_position(),
       company: m.experience_2_company(),
       period: m.experience_2_date(),
+      location: m.experience_2_location(),
       bullets: [
         <BoldMessage message={m.experience_2_bullet_1} />,
         <BoldMessage message={m.experience_2_bullet_2} />,
@@ -118,6 +116,7 @@ function NicolasThouveninCV() {
       title: m.experience_3_position(),
       company: m.experience_3_company(),
       period: m.experience_3_date(),
+      location: m.experience_3_location(),
       bullets: [
         <BoldMessage message={m.experience_3_bullet_1} />,
         <BoldMessage message={m.experience_3_bullet_2} />,
@@ -132,16 +131,19 @@ function NicolasThouveninCV() {
       degree: m.education_1_degree(),
       school: m.education_1_school(),
       period: m.education_1_date(),
+      location: m.education_1_location(),
     },
     {
       degree: m.education_2_degree(),
       school: m.education_2_school(),
       period: m.education_2_date(),
+      location: m.education_2_location(),
     },
     {
       degree: m.education_3_degree(),
       school: m.education_3_school(),
       period: m.education_3_date(),
+      location: m.education_3_location(),
     },
   ];
 
@@ -170,7 +172,7 @@ function NicolasThouveninCV() {
         }}
       />
       <div className="aspect-210/297 w-[210mm] mx-auto bg-[#8FAF83] flex flex-row">
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 items-center">
           <div className="w-35 h-35 rounded-full border-3 border-white overflow-hidden shadow-xs mx-auto mt-2">
             <img
               src="/Thouvenin Nicolas.png"
@@ -180,7 +182,7 @@ function NicolasThouveninCV() {
               className="object-cover w-full h-full"
             />
           </div>
-          <div className="w-55 pt-5 bg-[#8FAF83] px-2 flex flex-col grow justify-between">
+          <div className="w-55 px-2 flex flex-col grow justify-between">
             <SideSection
               title={m.cv_sidebar_contact()}
               items={[
@@ -209,7 +211,7 @@ function NicolasThouveninCV() {
                   key={item.label}
                   icon={<item.icon size={13} color="white" />}
                   text={item.value}
-                  href={item.href}
+                  //href={item.href}
                 />
               ))}
             />
@@ -246,49 +248,61 @@ function NicolasThouveninCV() {
 
         <div className="flex flex-col gap-0">
           <div className="h-full flex flex-col justify-center py-2 px-4">
-            <h1 className="font-[Raleway,sans-serif] font-extrabold text-[32px] text-white uppercase tracking-[0.04em] m-0 leading-none">
+            <h1 className="font-[Raleway,sans-serif] font-extrabold text-[32px] text-white uppercase m-0 leading-none">
               Nicolas Thouvenin
             </h1>
-            <p className="font-[Raleway,sans-serif] text-[14px] text-white/90 uppercase tracking-[0.14em] mt-1 mb-0">
+            <p className="font-[Raleway,sans-serif] text-[14px] text-white/90 uppercase mt-1 mb-0">
               {m.personal_title()}
             </p>
           </div>
           <div className="px-5 pt-5 bg-white flex flex-col gap-5">
-            <div className="flex flex-col gap-3">
+            <div>
+              <SectionTitle>{m.profile_summary_title()}</SectionTitle>
+              <p className="font-[Lato,sans-serif] text-[12px] text-neutral-800 leading-snug">
+                {m.profile_summary_paragraph()}
+              </p>
+            </div>
+            <div>
               <SectionTitle>{m.cv_section_experience()}</SectionTitle>
-              {locale_experience.map((exp) => (
-                <ExperienceEntry
-                  key={exp.company}
-                  title={exp.title}
-                  company={exp.company}
-                  period={exp.period}
-                  bullets={exp.bullets}
-                >
-                  {exp.subEntries && (
-                    <div className="*:pl-2 *:border-l-[#8FAF83] *:border-l-2 mt-1 gap-2 flex flex-col">
-                      {exp.subEntries.map((sub) => (
-                        <ExperienceEntry
-                          key={sub.company}
-                          company={sub.company}
-                          period={sub.period}
-                          bullets={sub.bullets}
-                        />
-                      ))}
-                    </div>
-                  )}
-                </ExperienceEntry>
-              ))}
+              <div className="flex flex-col gap-1">
+                {locale_experience.map((exp) => (
+                  <ExperienceEntry
+                    key={exp.company}
+                    title={exp.title}
+                    company={exp.company}
+                    period={exp.period}
+                    location={exp.location}
+                    bullets={exp.bullets}
+                  >
+                    {exp.subEntries && (
+                      <div className="*:pl-2 *:border-l-[#8FAF83] *:border-l-2 mt-1 gap-2 flex flex-col">
+                        {exp.subEntries.map((sub) => (
+                          <ExperienceEntry
+                            key={sub.company}
+                            company={sub.company}
+                            period={sub.period}
+                            bullets={sub.bullets}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </ExperienceEntry>
+                ))}
+              </div>
             </div>
             <div>
               <SectionTitle>{m.cv_section_education()}</SectionTitle>
-              {locale_education.map((edu) => (
-                <EduEntry
-                  key={edu.school}
-                  degree={edu.degree}
-                  school={edu.school}
-                  period={edu.period}
-                />
-              ))}
+              <div className="flex flex-col gap-1">
+                {locale_education.map((edu) => (
+                  <EduEntry
+                    key={edu.school}
+                    degree={edu.degree}
+                    school={edu.school}
+                    period={edu.period}
+                    location={edu.location}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>

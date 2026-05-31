@@ -2,6 +2,7 @@ interface ExperienceEntryProps {
   title?: string;
   company: string;
   period: string;
+  location?: string;
   bullets?: React.ReactNode[];
   children?: React.ReactNode;
 }
@@ -10,6 +11,7 @@ export const ExperienceEntry = ({
   title,
   company,
   period,
+  location,
   bullets,
   children,
 }: ExperienceEntryProps) => (
@@ -25,9 +27,16 @@ export const ExperienceEntry = ({
           </p>
         )}
       </div>
-      <span className="font-[Lato,sans-serif] text-[11px] text-gray-400 whitespace-nowrap italic text-right shrink-0 mt-0.5">
-        {period}
-      </span>
+      <div className="flex flex-col items-end">
+        <p className="font-[Lato,sans-serif] text-[11px] text-gray-400 whitespace-nowrap italic text-right shrink-0 mt-0.5">
+          {period}
+        </p>
+        {location && (
+          <p className="font-[Lato,sans-serif] text-[11px] text-gray-400 whitespace-nowrap italic text-right shrink-0 mt-0.5">
+            {location}
+          </p>
+        )}
+      </div>
     </div>
     {bullets && bullets.length > 0 && (
       <ul className="pl-4 space-y-1 list-disc">

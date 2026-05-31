@@ -8,7 +8,7 @@ export const LangItem = ({ lang, level }: LangItemProps) => (
     <span className="font-[Lato,sans-serif] text-[12.5px] font-bold text-white">
       {lang}
     </span>
-    <span className="font-[Lato,sans-serif] text-[11px] bg-white/25 text-white rounded-full px-2.5 py-0.5 tracking-wide">
+    <span className="font-[Lato,sans-serif] text-[11px] bg-white/25 text-white rounded-full px-2.5 py-0.5">
       {level}
     </span>
   </div>

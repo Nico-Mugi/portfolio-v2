@@ -2,10 +2,16 @@ interface EduEntryProps {
   degree: string;
   school: string;
   period: string;
+  location?: string;
 }
 
-export const EduEntry = ({ degree, school, period }: EduEntryProps) => (
-  <div className="flex justify-between items-start mb-3.5 gap-3">
+export const EduEntry = ({
+  degree,
+  school,
+  period,
+  location,
+}: EduEntryProps) => (
+  <div className="flex justify-between items-start gap-3">
     <div>
       <p className="font-[Raleway,sans-serif] font-bold text-[13px] text-gray-900 m-0">
         {degree}
@@ -14,8 +20,15 @@ export const EduEntry = ({ degree, school, period }: EduEntryProps) => (
         {school}
       </p>
     </div>
-    <span className="font-[Lato,sans-serif] text-[11px] text-gray-400 italic whitespace-nowrap shrink-0">
-      {period}
-    </span>
+    <div className="flex flex-col items-end">
+      <p className="font-[Lato,sans-serif] text-[11px] text-gray-400 italic whitespace-nowrap shrink-0">
+        {period}
+      </p>
+      {location && (
+        <p className="font-[Lato,sans-serif] text-[11px] text-gray-400 italic whitespace-nowrap shrink-0 mt-0.5">
+          {location}
+        </p>
+      )}
+    </div>
   </div>
 );
