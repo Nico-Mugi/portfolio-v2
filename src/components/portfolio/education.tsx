@@ -1,5 +1,5 @@
 import { SectionHeading } from "./section-heading";
-import { m } from "~/paraglide/messages";
+import { m } from "~/lib/paraglide/messages";
 
 export function EducationSection() {
   const locale_education = [

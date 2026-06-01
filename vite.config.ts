@@ -19,7 +19,7 @@ const config = defineConfig({
   plugins: [
     paraglideVitePlugin({
       project: "./project.inlang",
-      outdir: "./src/paraglide",
+      outdir: "./src/lib/paraglide",
       outputStructure: "message-modules",
       cookieName: "PARAGLIDE_LOCALE",
       strategy: ["url", "cookie", "preferredLanguage", "baseLocale"],
@@ -32,7 +32,7 @@ const config = defineConfig({
         !f.includes("dist") &&
         !f.includes("build") &&
         !f.includes("public/files") &&
-        !f.includes("src/paraglide"),
+        !f.includes("src/lib/paraglide"),
       pages: [
         {
           url: "/fr/cv",

@@ -1,6 +1,6 @@
 import { Logo, LogoVertical } from "./logo";
 import { Link } from "@tanstack/react-router";
-import { m } from "~/paraglide/messages";
+import { m } from "~/lib/paraglide/messages";
 
 export function Footer() {
   return (

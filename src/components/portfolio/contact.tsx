@@ -1,6 +1,6 @@
 import { contactItems } from "~/config/contactItems";
-import { cn } from "~/lib/utils";
-import { m } from "~/paraglide/messages";
+import { cn } from "~/lib/shadcn/utils";
+import { m } from "~/lib/paraglide/messages";
 
 export function ContactSection() {
   return (

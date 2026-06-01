@@ -7,7 +7,7 @@ import {
   ZapIcon,
 } from "lucide-react";
 import { SectionHeading } from "./section-heading";
-import { m } from "~/paraglide/messages";
+import { m } from "~/lib/paraglide/messages";
 
 export function SkillsSection() {
   const skillGroups = [

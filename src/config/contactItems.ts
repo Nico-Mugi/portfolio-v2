@@ -4,7 +4,7 @@ import {
   MapPinIcon,
   PhoneIncomingIcon,
 } from "lucide-react";
-import { m } from "~/paraglide/messages";
+import { m } from "~/lib/paraglide/messages";
 
 export type ContactItem = {
   icon: LucideIcon;

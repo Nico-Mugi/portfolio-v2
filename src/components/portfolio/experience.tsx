@@ -1,6 +1,6 @@
 import { BriefcaseIcon } from "lucide-react";
 import { SectionHeading } from "./section-heading";
-import { m } from "~/paraglide/messages";
+import { m } from "~/lib/paraglide/messages";
 
 export function ExperienceSection() {
   const locale_experience = [

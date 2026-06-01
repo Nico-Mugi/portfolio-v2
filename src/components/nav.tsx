@@ -2,7 +2,7 @@ import { Logo, LogoVertical } from "./logo";
 import { Link } from "@tanstack/react-router";
 import { siGithub } from "simple-icons";
 import { SimpleIcon } from "./simple-icon";
-import { getLocale, setLocale } from "~/paraglide/runtime";
+import { getLocale, setLocale } from "~/lib/paraglide/runtime";
 
 type NavLink = Omit<
   React.DetailedHTMLProps<

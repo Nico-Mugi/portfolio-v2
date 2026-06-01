@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { contactItems } from "~/config/contactItems";
-import { m } from "~/paraglide/messages";
+import { m } from "~/lib/paraglide/messages";
 
 export function HeroSection() {
   return (
