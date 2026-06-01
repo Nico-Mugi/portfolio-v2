@@ -81,13 +81,14 @@ function NicolasThouveninCV() {
           bullets: [
             <BoldMessage message={m.experience_1_sub_1_bullet_1} />,
             <BoldMessage message={m.experience_1_sub_1_bullet_2} />,
-            <BoldMessage message={m.experience_1_sub_1_bullet_3} />,
+            // <BoldMessage message={m.experience_1_sub_1_bullet_3} />,
             <BoldMessage message={m.experience_1_sub_1_bullet_4} />,
             <BoldMessage message={m.experience_1_sub_1_bullet_5} />,
-            <BoldMessage message={m.experience_1_sub_1_bullet_6} />,
+            // <BoldMessage message={m.experience_1_sub_1_bullet_6} />,
             <BoldMessage message={m.experience_1_sub_1_bullet_7} />,
             <BoldMessage message={m.experience_1_sub_1_bullet_8} />,
             <BoldMessage message={m.experience_1_sub_1_bullet_9} />,
+            <BoldMessage message={m.experience_1_sub_1_bullet_10} />,
           ],
         },
         // {
@@ -122,6 +123,7 @@ function NicolasThouveninCV() {
         <BoldMessage message={m.experience_3_bullet_2} />,
         <BoldMessage message={m.experience_3_bullet_3} />,
         <BoldMessage message={m.experience_3_bullet_4} />,
+        <BoldMessage message={m.experience_3_bullet_5} />,
       ],
     },
   ];
@@ -182,7 +184,7 @@ function NicolasThouveninCV() {
               className="object-cover w-full h-full"
             />
           </div>
-          <div className="w-55 px-2 flex flex-col grow justify-between">
+          <div className="w-55 flex flex-col grow justify-between">
             <SideSection
               title={m.cv_sidebar_contact()}
               items={[
@@ -247,7 +249,7 @@ function NicolasThouveninCV() {
         </div>
 
         <div className="flex flex-col gap-0">
-          <div className="h-full flex flex-col justify-center py-2 px-4">
+          <div className="h-full flex flex-col justify-center py-1 px-4">
             <h1 className="font-[Raleway,sans-serif] font-extrabold text-[32px] text-white uppercase m-0 leading-none">
               Nicolas Thouvenin
             </h1>
@@ -255,7 +257,7 @@ function NicolasThouveninCV() {
               {m.personal_title()}
             </p>
           </div>
-          <div className="px-5 pt-5 bg-white flex flex-col gap-5">
+          <div className="px-2 pt-1 bg-white flex flex-col gap-3">
             <div>
               <SectionTitle>{m.profile_summary_title()}</SectionTitle>
               <p className="font-[Lato,sans-serif] text-[12px] text-neutral-800 leading-snug">

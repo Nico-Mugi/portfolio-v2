@@ -11,7 +11,7 @@ export const EduEntry = ({
   period,
   location,
 }: EduEntryProps) => (
-  <div className="flex justify-between items-start gap-3">
+  <div className="flex justify-between items-start gap-2">
     <div>
       <p className="font-[Raleway,sans-serif] font-bold text-[13px] text-gray-900 m-0">
         {degree}
