@@ -1,7 +1,7 @@
 import { DownloadIcon, PrinterIcon, GlobeCheckIcon } from "lucide-react";
 import { createFileRoute } from "@tanstack/react-router";
-import { getLocale } from "~/lib/paraglide/runtime";
-import { m } from "~/lib/paraglide/messages";
+import { getLocale } from "~/paraglide/runtime";
+import { m } from "~/paraglide/messages";
 import { contactItems } from "~/config/contactItems";
 import { EduEntry } from "~/components/cv/edu-entry";
 import { SectionTitle } from "~/components/cv/section-title";

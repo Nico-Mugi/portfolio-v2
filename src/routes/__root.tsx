@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-import { getLocale } from "../lib/paraglide/runtime.js";
+import { getLocale } from "~/paraglide/runtime.js";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
 import appCss from "../styles.css?url";

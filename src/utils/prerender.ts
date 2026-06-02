@@ -1,4 +1,4 @@
-import { localizeHref } from "../lib/paraglide/runtime";
+import { localizeHref } from "../paraglide/runtime";
 
 export const prerenderRoutes = ["/", "/cv"].map((path) => ({
   path: localizeHref(path),

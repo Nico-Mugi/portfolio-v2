@@ -12,7 +12,7 @@ import { EducationSection } from "~/components/portfolio/education";
 import { ExperienceSection } from "~/components/portfolio/experience";
 import { HeroSection } from "~/components/portfolio/hero";
 import { SkillsSection } from "~/components/portfolio/skills";
-import { m } from "~/lib/paraglide/messages";
+import { m } from "~/paraglide/messages";
 import { seo } from "~/utils/seo";
 
 export const Route = createFileRoute("/")({
