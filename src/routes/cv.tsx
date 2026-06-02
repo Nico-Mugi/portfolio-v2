@@ -257,7 +257,7 @@ function NicolasThouveninCV() {
               {m.personal_title()}
             </p>
           </div>
-          <div className="px-2 pt-1 bg-white flex flex-col gap-3">
+          <div className="px-2 pt-1 bg-white flex flex-col gap-2">
             <div>
               <SectionTitle>{m.profile_summary_title()}</SectionTitle>
               <p className="font-[Lato,sans-serif] text-[12px] text-neutral-800 leading-snug">
