@@ -1,7 +1,7 @@
 import { Logo, LogoVertical } from "./logo";
 import { Link } from "@tanstack/react-router";
 import { siGithub } from "simple-icons";
-import { SimpleIcon } from "./simple-icon";
+import { SimpleIcon } from "./custom-icons/simple-icon";
 import { getLocale, setLocale } from "~/lib/paraglide/runtime";
 
 type NavLink = Omit<

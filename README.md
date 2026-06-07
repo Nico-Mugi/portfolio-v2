@@ -4,6 +4,7 @@
 
 ## Technos
 
+- Vite
 - React
 - Node.js
 - TypeScript
@@ -12,3 +13,6 @@
 - Tailwind CSS v4
 - Vite
 - Shadcn UI
+- Paraglide (i18n)
+- Playwright (E2E testing)
+- Cloudflare Workers (hosting)
