@@ -6,7 +6,7 @@ interface SideSectionProps {
 }
 
 export const SideSection = ({ title, items }: SideSectionProps) => (
-  <div>
+  <div className="flex flex-col gap-1">
     {/* <h3 className="font-[Raleway,sans-serif] text-[11px] font-bold uppercase text-white/75 mb-2">
       {title}
     </h3> */}

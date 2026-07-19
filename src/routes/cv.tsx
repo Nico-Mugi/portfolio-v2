@@ -15,6 +15,7 @@ import { seo } from "~/utils/seo";
 import { SimpleIcon } from "~/components/custom-icons/simple-icon";
 import { ciLinkedin } from "~/components/custom-icons/linkedin";
 import { BoldMessage } from "~/components/paraglide/bold-message";
+import { siGithub } from "simple-icons";
 
 export const Route = createFileRoute("/cv")({
   head: () => ({
@@ -52,7 +53,8 @@ function NicolasThouveninCV() {
     m.cv_skill_styling(),
     m.cv_skill_deployment(),
     m.cv_skill_scraping(),
-    m.cv_skill_automation(),
+    m.cv_skill_testing(),
+    //m.cv_skill_automation(),
     m.cv_skill_tools(),
   ];
 
@@ -61,7 +63,7 @@ function NicolasThouveninCV() {
     m.pm_skill_project_tools(),
     m.pm_skill_architecture(),
     m.pm_skill_security(),
-    m.pm_skill_budget(),
+    //m.pm_skill_budget(),
     m.pm_skill_risk(),
     m.pm_skill_planning(),
   ];
@@ -124,6 +126,7 @@ function NicolasThouveninCV() {
         <BoldMessage message={m.experience_3_bullet_3} />,
         <BoldMessage message={m.experience_3_bullet_4} />,
         <BoldMessage message={m.experience_3_bullet_5} />,
+        <BoldMessage message={m.experience_3_bullet_6} />,
       ],
     },
   ];
@@ -208,6 +211,19 @@ function NicolasThouveninCV() {
                   value: "linkedin.com/in/nico-thouvenin",
                   href: "https://linkedin.com/in/nico-thouvenin",
                 },
+                {
+                  icon: ({ size, color }: { size: number; color: string }) => (
+                    <SimpleIcon
+                      path={siGithub.path}
+                      title={siGithub.title}
+                      size={size}
+                      color={color}
+                    />
+                  ),
+                  label: "github",
+                  value: "github.com/Nico-Mugi",
+                  href: "https://github.com/Nico-Mugi",
+                },
               ].map((item) => (
                 <ContactItem
                   key={item.label}
@@ -257,7 +273,7 @@ function NicolasThouveninCV() {
               {m.personal_title()}
             </p>
           </div>
-          <div className="px-2 pt-1 bg-white flex flex-col gap-2">
+          <div className="px-2 pt-1 bg-white flex flex-col gap-1">
             <div>
               <SectionTitle>{m.profile_summary_title()}</SectionTitle>
               <p className="font-[Lato,sans-serif] text-[12px] text-neutral-800 leading-snug">
